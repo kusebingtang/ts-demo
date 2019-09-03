@@ -38,61 +38,40 @@ es5的写法 （正确写法）  ts中（错误写法）
  写ts代码必须指定类型
 
 
-
-var flag:boolean=true;
-
-// flag=123;  //错误
-
-flag=false;  //正确
-
+*/
+var flag = true;
+// flag=123;  //错误  不能将类型“123”分配给类型“boolean”。
+flag = false; //正确
 console.log(flag);
-
-
-*/
 // 数字类型（number）
-/*
-    var num:number=123;
-
-    num=456;
-
-    console.log(num);  /正确/
-
-
-    num='str';    //错误
-    
-    */
+/* */
+var num = 123;
+num = 456;
+console.log(num);
+/正确/;
+// num='str';    //错误 不能将类型“"str"”分配给类型“number”。
+console.log("Hello World!");
 // 字符串类型(string)
-/*
-     var str:string='this is ts';
-
-     str='haha';  //正确
-
-
-     str=true;  //错误
-
-*/
+/**/
+var str = 'this is ts';
+str = 'haha'; //正确
+// str=true;  //错误 不能将类型“true”分配给类型“string”。
 // 数组类型（array）  ts中定义数组有两种方式
 // var arr=['1','2'];  //es5定义数组
 // 1.第一种定义数组的方式
-/*
-   var arr:number[]=[11,22,33];
-
-   console.log(arr);
-*/
+/**/
+var arr = [11, 22, 33];
+console.log(arr);
 //2.第二种定义数组的方式
-/*
-
-  var arr:Array<number>=[11,22,33];
-
-  console.log(arr)
-  
-*/
+/**/
+var arr = [11, 22, 33];
+console.log(arr);
 // 元组类型（tuple）  属于数组的一种
 // var arr:Array<number>=[11,22,33];
 // console.log(arr)
 //元祖类型
-// let arr:[number,string]=[123,'this is ts'];
-// console.log(arr);
+var arr2 = [123, 'this is ts'];
+console.log(arr2);
 /*
 
 
@@ -113,24 +92,24 @@ console.log(flag);
             } ;
 
  */
-/*
-
-    enum Flag {success=1,error=2};
-
-
-    let s:Flag=Flag.success;
-
-    console.log(s);
-
-
-
-    enum Flag {success=1,error=2};
-
-
-        let f:Flag=Flag.error;
-
-        console.log(f);
-*/
+/**/
+var Flag;
+(function (Flag) {
+    Flag[Flag["success"] = 1] = "success";
+    Flag[Flag["error"] = 2] = "error";
+})(Flag || (Flag = {}));
+;
+var s = Flag.success;
+console.log(s);
+var Flag2;
+(function (Flag2) {
+    Flag2[Flag2["success"] = 1] = "success";
+    Flag2[Flag2["error"] = 2] = "error";
+})(Flag2 || (Flag2 = {}));
+;
+var f = Flag2.error;
+console.log(f);
+console.log("------------------------------------------");
 /*
 000010
 
@@ -140,14 +119,27 @@ console.log(flag);
 
 
 */
-//    enum Color {blue,red,'orange'};
-//    var c:Color=Color.red;
-//    console.log(c);   //1  如果标识符没有赋值 它的值就是下标
-// enum Color {blue,red=3,'orange'};
-// // var c:Color=Color.red;
-// // console.log(c);   //3
-// var c:Color=Color.orange;
-// console.log(c);   //4
+var Color;
+(function (Color) {
+    Color[Color["blue"] = 0] = "blue";
+    Color[Color["red"] = 1] = "red";
+    Color[Color["orange"] = 2] = "orange";
+})(Color || (Color = {}));
+;
+var c = Color.red;
+console.log(c); //1  如果标识符没有赋值 它的值就是下标,从0开始
+var Color2;
+(function (Color2) {
+    Color2[Color2["blue"] = 0] = "blue";
+    Color2[Color2["red"] = 3] = "red";
+    Color2[Color2["orange"] = 4] = "orange";
+})(Color2 || (Color2 = {}));
+;
+// var c:Color=Color.red;
+// console.log(c);   //3
+var c1 = Color2.orange;
+console.log(c1); //4
+console.log("------------------------------------------");
 var Err;
 (function (Err) {
     Err[Err["undefined"] = -1] = "undefined";
