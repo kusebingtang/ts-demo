@@ -186,10 +186,7 @@ function ajax(config: Config) {
 
         if (xhr.readyState == 4 && xhr.status == 200) {
             console.log('chengong');
-
-
             if (config.dataType == 'json') {
-
                 console.log(JSON.parse(xhr.responseText));
             } else {
                 console.log(xhr.responseText)
